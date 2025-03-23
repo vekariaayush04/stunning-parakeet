@@ -1,0 +1,38 @@
+#heading{
+    font-size: xx-large;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+#heading2{
+    font-size: x-large;
+    font-weight: 500;
+}
+
+#heading3{
+    font-size: larger;
+    font-weight: 500;
+}
+
+#heading4{
+    font-size: large;
+    font-weight: 500;
+}
+
+#heading5{
+    font-size: medium;
+    font-weight: 500;
+}
+
+li {
+    list-style-type: disc;
+}
+
+ul{
+    padding-left: 2rem;
+}
+
+li::marker {
+    color: white;
+    padding-left: 1px;
+}
