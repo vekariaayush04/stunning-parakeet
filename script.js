@@ -4,9 +4,42 @@ const content = document.getElementById("content")
 textArea.addEventListener("input",(e) => {
     e.preventDefault()
     const text = e.target.value
-    const data= text.split("\n")
+    const data = text.split("\n")
+    
     let html = ""
     data.forEach((d)=>{
+        d = escapeHTML(d);
+        const boldRegex = /\*\*.*?\*\*/g
+        const italicRegex = /\_.*?\_/g
+        const strikeRegex = /\~\~.*?\~\~/g
+        const underlineRegex = /\_\_.*?\_\_/g
+        const found = d.match(boldRegex)
+        const ifound = d.match(italicRegex)
+        const sfound = d.match(strikeRegex)
+        const ufound = d.match(underlineRegex)
+        if(found){
+
+            found.forEach((w) => {
+                d = d.replace(w, `<b>${w.slice(2,w.length - 2)}</b>`)
+            })
+        }
+        if(ifound && !ufound){
+            
+            ifound.forEach((w) => {
+                d = d.replace(w, `<i>${w.slice(1,w.length - 1)}</i>`)
+            })
+        }   
+        if(sfound){            
+            sfound.forEach((w) => {
+                d = d.replace(w, `<s>${w.slice(2,w.length - 2)}</s>`)
+            })
+        }
+        if(ufound){
+            ufound.forEach((w) => {
+                d = d.replace(w, `<u>${w.slice(2,w.length - 2)}</u>`)
+            })
+        }
+        
         if(d.startsWith("##### ")){
             html += `<h5 id="heading5">\n${d.slice(5)}</h5>`
         }else if(d.startsWith("#### ")){
@@ -28,6 +61,17 @@ textArea.addEventListener("input",(e) => {
         }else{
             html += `<p>\n${d}</p>`
         }
+        // console.log(html);
     }) 
     content.innerHTML = html
 })
+
+
+function escapeHTML(text) {
+    return text
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
