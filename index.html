@@ -8,26 +8,53 @@
     <title>Markdown parser</title>
 </head>
 <body class="max-h-screen overflow-hidden">
-    <h1 class="text-3xl font-bold text-white text-center py-6 bg-[#294936] border-b-2 border-[#367a4f]">
-        Markdown Previewer
-    </h1>
+    <div class="py-6 bg-[#294936] border-b-2 border-[#367a4f] flex justify-between">
+        <h1 class="ml-10 text-3xl font-bold text-white text-center ">
+            Markdown Previewer
+        </h1>
+        <button class="mr-10 border border-[#AEF6C7] px-3 rounded-lg font-semibold hover:bg-[#5B8266] hover:cursor-pointer text-white" id="reset-button">Reset</button>
+    </div>
 
     <div class="grid grid-cols-5 w-screen h-[calc(100vh-80px)] bg-[#212922] overflow-hidden">
         <div class="col-span-2 flex flex-col items-center p-4 h-full min-h-0">
             <h2 class="text-white mb-4 text-xl font-semibold">Editor</h2>
             <div class="bg-[#294936] rounded-xl flex-1 w-full max-w-[520px] min-h-0 p-5"> 
-                <textarea 
+                <textarea
                     id="text-area" 
                     class="w-full h-full p-4 bg-transparent text-white resize-none focus:outline-none overflow-auto"
                     placeholder="Enter your markdown here..."
-                ></textarea>
+                >
+# heading 1
+## heading 2
+### heading 3
+#### heading 4
+##### heading 5
+
+---
+
+this is paragraph normal text lorem ipsum dolor doloe ipsum lorem sit .
+
+---
+
+## unorderd list
+
+- list 1
+- list 2
+
+---
+
+this is ** bold **
+this is __ underline__
+this is ~~strikethorugh~~
+this is _italic_
+                </textarea>
             </div>
         </div>
 
         <div class="col-span-3 flex flex-col items-center py-4 h-full min-h-0">
-            <h2 class="text-white mb-4 text-xl font-semibold">Preview</h2>
+            <h2 class="text-white mb-4 text-xl font-semibold">Markdown Preview</h2>
             <div class="bg-[#294936] rounded-xl flex-1 w-full max-w-[720px] min-h-0 p-5 overflow-auto">
-                <div id="content" class="text-white h-full ">
+                <div id="content" class="text-[#AEF6C7] h-full ">
                 </div>
             </div>
         </div>
